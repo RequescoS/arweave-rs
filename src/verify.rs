@@ -6,7 +6,8 @@ use crate::{
 use data_encoding::BASE64URL;
 use jsonwebkey::JsonWebKey;
 use rand::thread_rng;
-use rsa::{pkcs8::DecodePublicKey, PaddingScheme, PublicKey, RsaPublicKey};
+use rsa::pkcs8::FromPublicKey;
+use rsa::{PaddingScheme, PublicKey, RsaPublicKey};
 use sha2::Digest;
 
 pub fn verify(pub_key: &[u8], message: &[u8], signature: &[u8]) -> Result<(), Error> {

@@ -27,14 +27,15 @@ paris = "1.5.13"
 pretend = "0.4.0"
 rand = "0.8.5"
 reqwest = { version = "0.11.20", default-features = false, features = ["rustls-tls", "json"] }
-rsa = "0.6.1"
-sha2 = "0.10.2"
+rsa = "0.5.0"
+sha2 = "0.9.9"
 serde = { version = "1.0.144", features = ["derive"]}
 serde-aux = "4.1.0"
 serde_json = { version = "1.0.85" }
 thiserror = "1.0.34"
 tokio = { version = "1.21.1", features = ["full"]}
 url = "2.3.1"
+zeroize = "=1.3"
 
 [dev-dependencies]
 tokio-test = "0.4.2"

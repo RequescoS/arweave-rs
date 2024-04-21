@@ -80,10 +80,10 @@ impl TxClient {
         Base64::from_str(&last_tx_str).map_err(Error::Base64DecodeError)
     }
 
-    pub async fn get_fee(&self, target: Base64, data: Vec<u8>) -> Result<u64, Error> {
+    pub async fn get_fee(&self, target: Base64, data_len: usize) -> Result<u64, Error> {
         let url = self
             .base_url
-            .join(&format!("price/{}/{}", data.len(), target))
+            .join(&format!("price/{}/{}", data_len, target))
             .map_err(Error::UrlParseError)?;
         let winstons_per_bytes = reqwest::get(url)
             .await

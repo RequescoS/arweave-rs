@@ -163,8 +163,8 @@ impl Arweave {
         self.tx_client.get_last_tx().await
     }
 
-    pub async fn get_fee(&self, target: Base64, data: Vec<u8>) -> Result<u64, Error> {
-        self.tx_client.get_fee(target, data).await
+    pub async fn get_fee(&self, target: Base64, data_len: usize) -> Result<u64, Error> {
+        self.tx_client.get_fee(target, data_len).await
     }
 
     pub async fn get_tx(&self, id: Base64) -> Result<(StatusCode, Option<Tx>), Error> {

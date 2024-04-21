@@ -3,7 +3,8 @@
 use crate::error::Error;
 use jsonwebkey as jwk;
 use rand::thread_rng;
-use rsa::{pkcs8::DecodePrivateKey, PaddingScheme, PublicKeyParts, RsaPrivateKey};
+use rsa::pkcs8::FromPrivateKey;
+use rsa::{PaddingScheme, PublicKeyParts, RsaPrivateKey};
 use sha2::Digest;
 use std::{fs, path::PathBuf};
 

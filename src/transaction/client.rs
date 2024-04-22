@@ -2,7 +2,6 @@ use reqwest::{
     header::{ACCEPT, CONTENT_TYPE},
     StatusCode,
 };
-use serde_json::json;
 use std::{str::FromStr, thread::sleep, time::Duration};
 
 use crate::{
@@ -42,7 +41,6 @@ impl TxClient {
         let mut status = reqwest::StatusCode::NOT_FOUND;
         let url = self.base_url.join("tx").map_err(Error::UrlParseError)?;
 
-        dbg!(json!(signed_transaction));
         while (retries < CHUNKS_RETRIES) & (status != reqwest::StatusCode::OK) {
             let res = self
                 .client
@@ -54,7 +52,6 @@ impl TxClient {
                 .await
                 .map_err(Error::ReqwestError)?;
             status = res.status();
-            dbg!(status);
             if status == reqwest::StatusCode::OK {
                 return Ok((signed_transaction.id.clone(), signed_transaction.reward));
             }
